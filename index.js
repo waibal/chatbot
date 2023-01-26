@@ -3,7 +3,9 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
-const io = new Server(server); //socket.io instance
+const io = new Server(server, {
+    cookie: true //add cookies
+}); //test cookie connection with 'curl "https://mydomain.com/socket.io/?EIO=4&transport=polling" -v'
 
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
