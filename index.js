@@ -3,6 +3,7 @@ const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
+
 const io = new Server(server, {
     cookie: true //add cookies
 }); //test cookie connection with 'curl "https://mydomain.com/socket.io/?EIO=4&transport=polling" -v'
@@ -27,5 +28,3 @@ io.on('connection', (socket) => {
         io.emit('chat message', msg);
     });
 }); //send message
-
-
